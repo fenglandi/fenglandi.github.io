@@ -8,7 +8,7 @@
 
   <!-- Title -->
   
-  <title>sonnet的一亩三风地</title>
+  <title>一篇文章学清楚生信数据的格式 - sonnet的一亩三风地</title>
 
   <!--Favicon-->
   <link rel="icon" href="favicon/favicon.ico">
@@ -72,78 +72,22 @@
 
 
   		<div class="row">
-  			
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/just do it/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="I"ll try anything once.">
-      <div class="overlay">
-        <span class="overlay-text">I"ll try anything once.</span>
-      </div>
-    </a>
-  </div>
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/images/tree.jpg" alt="一篇文章学清楚生信数据的格式">
 </div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/july6.2018/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="学习处理自己的FASTQ的结果">
-      <div class="overlay">
-        <span class="overlay-text">学习处理自己的FASTQ的结果</span>
-      </div>
-    </a>
-  </div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>一篇文章学清楚生信数据的格式</h1>
 </div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <font color="#2E8B57" size="7"><br>哈哈，为了让自己不费力看文本，所以把字体调大了。<br>根据生信前辈的指示，要熟悉生信的各种数据格式。<br>所以做了一个汇总文档给自己看。<br></font><br>[TOC]<br><font color="#2E8B57" size="12"><br>### fastq<br></font><br><font color="#000000" size="10"><br>fastq格式是文本格式。拿到的测序下机数据就是fastq格式。fastq格式常用于高通量测试数据的存储。<br><br>fastq格式常以四部分组成。<br><br>第一部分：以 @ 开始紧接着是序列的标识符和可选择的描述信息，和fasta格式的头行很相似<br><br>第二部分：原始序列信息<br><br>第三部分：以 + 开始，后面可再接与第一部分的相同的序列标识符或者描述信息。（我的fastq文件打开这行就是空白的）<br><br>第四部分：以ASCII字符表示第二行碱基序列的测序质量。<br>附上 fastq转fasta的代码，从 <a href="http://www.biotrainee.com/thread-42-1-1.html" target="_blank" rel="noopener">技能树</a> 上摘下来的<br>zcat input_file.fastq.gz | awk ‘NR%4==1{printf “&gt;%s\n”, substr($0,2)}NR%4==2{print}’&gt;output_file.fa<br><br></font><br><font color="#2E8B57" size="12"><br>### fasta<br></font><br><font color="#000000" size="10"><br><br></font>
+
+<font color="#2E8B57" size="12"><br>### maf<br></font><br><font color="#000000" size="10"><br><br></font>
+
+<font color="#2E8B57" size="12"><br>### bam 和 sam<br></font><br><font color="#000000" size="10"><br><br></font><br><font color="#2E8B57" size="12"><br>### vcf<br></font><br><font color="#000000" size="10"><br><br></font><br><font color="#2E8B57" size="12"><br>### gff<br></font><br><font color="#000000" size="10"><br><br></font><br><font color="#2E8B57" size="12"><br>### gtf<br></font><br><font color="#000000" size="10"><br><br></font><br><font color="#2E8B57" size="12"><br>### bed<br></font><br><font color="#000000" size="10"><br><br></font>
 
 
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/fastx-toolkit的安装与使用/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="安装fastx_toolkit-踩坑之旅又要开始了。">
-      <div class="overlay">
-        <span class="overlay-text">安装fastx_toolkit-踩坑之旅又要开始了。</span>
-      </div>
-    </a>
-  </div>
+
 </div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/articles/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="文献阅读.">
-      <div class="overlay">
-        <span class="overlay-text">文献阅读.</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/command/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="学习几个稍微有点复杂的命令：awk ,sed ,grep.">
-      <div class="overlay">
-        <span class="overlay-text">学习几个稍微有点复杂的命令：awk ,sed ,grep.</span>
-      </div>
-    </a>
-  </div>
-</div>
-
-
-    <div class="col-md-6 col-12 mb-4">
-  <div class="hovereffect">
-    <a href="/2018/07/06/format/">
-      <img class="img-fluid portfolio-img" src="/images/tree.jpg" alt="一篇文章学清楚生信数据的格式">
-      <div class="overlay">
-        <span class="overlay-text">一篇文章学清楚生信数据的格式</span>
-      </div>
-    </a>
-  </div>
-</div>
-
 
 
       </div>
