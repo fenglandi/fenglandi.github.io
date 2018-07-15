@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head tag -->
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  
+  <title>Bioinformatics - 田园将芜胡不归</title>
+
+  <!--Favicon-->
+  <link rel="icon" href="favicon/favicon.ico">
+
+  <!--Description-->
+  
+      <meta name="description" content="sonnet的一亩三风地">
+  
+
+  <!--Author-->
+  
+      <meta name="author" content="sonnet">
+  
+
+  <!-- Pure CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans:300,800" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+
+  <body>
+  	<div class="container-fluid navbar-container m-sm-5">
+      <!-- Header -->
+      <nav class="navbar navbar-toggleable-sm navbar-light px-1 py-3 my-3 mb-sm-5">
+  <a class="navbar-brand ml-2" href="/">田园将芜胡不归</a>
+  <button class="navbar-toggler navbar-toggler-right py-2" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarCollapse">
+    <ul class="navbar-nav ml-auto my-auto">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="/virome">Learning</a>
+        </li>
+      
+    </ul>
+    <hr class="hidden-md-up" />
+  </div>
+</nav>
+
+
+  		<div class="row">
+  			<div class="col-12 mb-4">
+  <img class="img-fluid project-img" src="/images/tree.jpg" alt="Bioinformatics">
+</div>
+<div class="col-lg-4 col-12 pt-3 px-4 pr-lg-5">
+  <h1>Bioinformatics</h1>
+</div>
+<div class="col-lg-8 col-12 pt-lg-3 mb-4 pl-lg-5 px-lg-0 px-4 portfolio-content">
+  <h4 id="自己fastqc结果的处理"><a href="#自己fastqc结果的处理" class="headerlink" title="自己fastqc结果的处理"></a>自己fastqc结果的处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> the first step is to identify problems then improve of them.</span><br><span class="line"> per tile sequence quality :warn</span><br><span class="line">绿色的&quot;PASS&quot;，黄色的&quot;WARN&quot;和红色的&quot;FAIL&quot;</span><br><span class="line"> 当Per tile sequence quality显示fail或者warning，表明测序的lane或某个run中出现出现了部分故障，从而影响一些特定的区域和循环，进而使测序数据的质量下降。</span><br><span class="line"> 另外，如果read的3&apos;端的质量是好的，就意味着存在瞬时质量损失(Transient quality loss)的区域难以被剪切处理。</span><br><span class="line"> 解决：根据QC报告中tile position，过滤或移除fastqc文件中低质量的tile。</span><br><span class="line"> 自己的样本的的tile位置在6-8bp可以直接切除。</span><br><span class="line"> [笔记来自](https://www.cnblogs.com/adawong/articles/8042574.html)</span><br><span class="line"> per base sequence content :FAIL</span><br><span class="line"> 对所有reads的每一个位置，统计ATCG四种碱基（正常情况）的分布：</span><br><span class="line"> 如果建库足够均匀，reads的每个位置应当是没有差异的，所以GC含量的线应当平行于X轴，反映样品（基因组、转录组等）的GC含量。</span><br><span class="line"> 当部分位置GC含量出现bias时，往往提示我们有overrepresented sequence的污染。当所有位置的GC含量一致的表现出bias时，往往代表文库有bias (建库过程或本身特点)，或者是测序中的系统误差。</span><br><span class="line"> 当任一位置的GC含量偏离均值的5%时，报&quot;WARN&quot;；当任一位置的GC含量偏离均值的10%时，报&quot;FAIL&quot;。  </span><br><span class="line"> 处理方式：将前30bp切掉。</span><br><span class="line"> per sequence GC content:FAIL</span><br><span class="line"> 不知道怎么理解这个。</span><br><span class="line"> 红线是实际情况，蓝线是理论分布（正态分布，均值不一定在50%，而是由平均GC含量推断的）。 曲线形状的偏差往往是由于**文库的污染**或是**部分reads构成的子集有偏差（overrepresented reads）。**形状接近正态但偏离理论分布的情况提示我们可能有系统偏差。</span><br><span class="line"> 偏离理论分布的reads超过15%时，报&quot;WARN&quot;；偏离理论分布的reads超过30%时，报&quot;FAIL&quot;。</span><br><span class="line"> 自己的样本应该是：部分reads构成的子集有偏差（overrepresented reads）。</span><br><span class="line"> 因为后面的Overrepresented sequences也是报的 WARN</span><br><span class="line"> Overrepresented sequences:WARN</span><br><span class="line"> what are the most duplicated sequences.</span><br><span class="line"> 用adaptcut 或者trimmomatic.</span><br><span class="line"> 但是因为始终要 用到一个 toolkit 所以想先用fastx_toolkit试试.</span><br></pre></td></tr></table></figure>
+<h1 id="文献阅读"><a href="#文献阅读" class="headerlink" title="文献阅读"></a>文献阅读</h1><h1 id="Viral-Metagenomics-Methods-and-Protocols-Apr-15-2018"><a href="#Viral-Metagenomics-Methods-and-Protocols-Apr-15-2018" class="headerlink" title="Viral Metagenomics Methods and Protocols(Apr 15,2018)"></a>Viral Metagenomics Methods and Protocols(Apr 15,2018)</h1><p><a href="https://www.researchgate.netpublication/323839687_Viral_Metagenomics_Methods_and_Protocols" target="_blank" rel="noopener">Viral Metagenomics Methods and Protocols</a><br>[全书]（<a href="http://www.doc88.com/p-0877885863992.html）" target="_blank" rel="noopener">http://www.doc88.com/p-0877885863992.html）</a></p>
+<h1 id="好像这是本书。"><a href="#好像这是本书。" class="headerlink" title="好像这是本书。"></a>好像这是本书。</h1><h1 id="july-3-2018"><a href="#july-3-2018" class="headerlink" title="july 3,2018"></a>july 3,2018</h1><ul>
+<li>解释了为什么探索病毒群落是困难的   </li>
+<li>两个原因：</li>
+</ul>
+<ol>
+<li>不能被培养</li>
+<li>there is no one single gene that is common to all viral genomes. 这样的吗。</li>
+</ol>
+<ul>
+<li>Viral metagenomic analyses of uncultured viral communities circumvent these limitations and can provide insights into the composition and structure of environmental viral communities.</li>
+</ul>
+
+</div>
+
+
+      </div>
+      
+  	</div>
+
+    <!-- After footer scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  </body>
+</html>
